@@ -42,6 +42,17 @@ jobs:
           path: |
             release.zip
             !venv/
+      - name: Archive deployment package
+        run: zip -r deployment-package.zip .
+
+      - name: Upload deployment package
+        uses: actions/upload-artifact@v3
+        with:
+         name: deployment-package
+         path: deployment-package.zip
+
+        
+            
 
   deploy:
     runs-on: ubuntu-latest
